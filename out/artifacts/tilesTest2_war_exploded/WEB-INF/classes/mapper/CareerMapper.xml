@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.syn.tiles.springmvc.dao.CareerMapper" >
+  <resultMap id="BaseResultMap" type="cn.syn.tiles.springmvc.model.Career" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="development_direction" property="developmentDirection" jdbcType="VARCHAR" />
+    <result column="career_name" property="careerName" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="limit_condition" property="limitCondition" jdbcType="INTEGER" />
+    <result column="difficulty" property="difficulty" jdbcType="INTEGER" />
+    <result column="period_one" property="periodOne" jdbcType="INTEGER" />
+    <result column="period_two" property="periodTwo" jdbcType="INTEGER" />
+    <result column="prospects" property="prospects" jdbcType="BIGINT" />
+    <result column="salary_one" property="salaryOne" jdbcType="INTEGER" />
+    <result column="salary_two" property="salaryTwo" jdbcType="INTEGER" />
+    <result column="salary_three" property="salaryThree" jdbcType="INTEGER" />
+    <!--<result column="status" property="status" jdbcType="INTEGER" />-->
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="BIGINT" />
+    <result column="update_at" property="updateAt" jdbcType="BIGINT" />
+    <result column="hint" property="hint" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, img, development_direction, career_name, description, limit_condition, difficulty, 
+    period_one, period_two, prospects, salary_one, salary_two, salary_three,
+    editor_id, create_at, update_at, hint
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" resultType="cn.syn.tiles.springmvc.model.Career" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from career
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from career
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="cn.syn.tiles.springmvc.model.Career" >
+    insert into career
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="developmentDirection != null" >
+        development_direction,
+      </if>
+      <if test="careerName != null" >
+        career_name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="limitCondition != null" >
+        limit_condition,
+      </if>
+      <if test="difficulty != null" >
+        difficulty,
+      </if>
+      <if test="periodOne != null" >
+        period_one,
+      </if>
+      <if test="periodTwo != null" >
+        period_two,
+      </if>
+      <if test="prospects != null" >
+        prospects,
+      </if>
+      <if test="salaryOne != null" >
+        salary_one,
+      </if>
+      <if test="salaryTwo != null" >
+        salary_two,
+      </if>
+      <if test="salaryThree != null" >
+        salary_three,
+      </if>
+      <!--<if test="status != null" >-->
+        <!--status,-->
+      <!--</if>-->
+      <if test="editorId != null" >
+        editor_id,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="hint != null" >
+        hint,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="developmentDirection != null" >
+        #{developmentDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="careerName != null" >
+        #{careerName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="limitCondition != null" >
+        #{limitCondition,jdbcType=INTEGER},
+      </if>
+      <if test="difficulty != null" >
+        #{difficulty,jdbcType=INTEGER},
+      </if>
+      <if test="periodOne != null" >
+        #{periodOne,jdbcType=INTEGER},
+      </if>
+      <if test="periodTwo != null" >
+        #{periodTwo,jdbcType=INTEGER},
+      </if>
+      <if test="prospects != null" >
+        #{prospects,jdbcType=BIGINT},
+      </if>
+      <if test="salaryOne != null" >
+        #{salaryOne,jdbcType=INTEGER},
+      </if>
+      <if test="salaryTwo != null" >
+        #{salaryTwo,jdbcType=INTEGER},
+      </if>
+      <if test="salaryThree != null" >
+        #{salaryThree,jdbcType=INTEGER},
+      </if>
+      <!--<if test="status != null" >-->
+        <!--#{status,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <if test="editorId != null" >
+        #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=BIGINT},
+      </if>
+      <if test="hint != null" >
+        #{hint,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="cn.syn.tiles.springmvc.model.Career" >
+    update career
+    <set >
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="developmentDirection != null" >
+        development_direction = #{developmentDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="careerName != null" >
+        career_name = #{careerName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="limitCondition != null" >
+        limit_condition = #{limitCondition,jdbcType=INTEGER},
+      </if>
+      <if test="difficulty != null" >
+        difficulty = #{difficulty,jdbcType=INTEGER},
+      </if>
+      <if test="periodOne != null" >
+        period_one = #{periodOne,jdbcType=INTEGER},
+      </if>
+      <if test="periodTwo != null" >
+        period_two = #{periodTwo,jdbcType=INTEGER},
+      </if>
+      <if test="prospects != null" >
+        prospects = #{prospects,jdbcType=BIGINT},
+      </if>
+      <if test="salaryOne != null" >
+        salary_one = #{salaryOne,jdbcType=INTEGER},
+      </if>
+      <if test="salaryTwo != null" >
+        salary_two = #{salaryTwo,jdbcType=INTEGER},
+      </if>
+      <if test="salaryThree != null" >
+        salary_three = #{salaryThree,jdbcType=INTEGER},
+      </if>
+      <!--<if test="status != null" >-->
+        <!--status = #{status,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=BIGINT},
+      </if>
+      <if test="hint != null" >
+        hint = #{hint,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+<select id="listCareer" resultMap="BaseResultMap" resultType="cn.syn.tiles.springmvc.model.Career">
+  SELECT * from career
+</select>
+</mapper>
